@@ -153,20 +153,11 @@ export default function Dashboard({ ine, studentName, semesters, onLogout }: Das
     const gpa = calculateGPA();
     const isPassingGPA = gpa >= 10;
 
-    const getInitials = (name: string) => {
-        return name
-            .split(' ')
-            .map(part => part[0])
-            .join('')
-            .toUpperCase()
-            .slice(0, 2);
-    };
 
     return (
         <div className="flex h-screen bg-gray-50">
             <Sidebar
                 studentName={studentName}
-                initials={getInitials(studentName)}
                 onLogout={onLogout}
             />
 
