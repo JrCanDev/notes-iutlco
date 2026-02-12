@@ -180,10 +180,10 @@ export default function Dashboard({ ine, studentName, semesters, onLogout }: Das
                             id="semester"
                             value={selectedSemester}
                             onChange={(e) => setSelectedSemester(e.target.value)}
-                            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-4 py-2 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none cursor-pointer"
                         >
                             {semesters.map(sem => (
-                                <option key={sem.id} value={sem.id}>
+                                <option key={sem.id} value={sem.id} className="bg-white text-gray-900">
                                     {sem.label}
                                 </option>
                             ))}
@@ -269,7 +269,7 @@ export default function Dashboard({ ine, studentName, semesters, onLogout }: Das
                                                     </div>
                                                     <div className="text-xs text-gray-500 mb-3">{grade.ueName}</div>
                                                     <div className="flex items-center justify-between">
-                                                        <span className="text-xs bg-gray-100 px-2 py-1 rounded">
+                                                        <span className="text-xs text-gray-700 bg-gray-100 px-2 py-1 rounded">
                                                             Coef {grade.coefficient}
                                                         </span>
                                                         <span className={`text-3xl font-bold ${isPassing ? 'text-emerald-600' : 'text-rose-600'}`}>
@@ -371,7 +371,7 @@ export default function Dashboard({ ine, studentName, semesters, onLogout }: Das
                                                                                         </div>
                                                                                     </div>
                                                                                     <div className="flex items-center gap-3 flex-shrink-0 ml-4">
-                                                                                        <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                                                                                        <span className="text-xs text-gray-700 bg-gray-100 px-2 py-1 rounded">
                                                                                             Coef {evaluation.coefficient}
                                                                                         </span>
                                                                                         <span className={`text-xl font-bold ${evaluation.grade === '~' ? 'text-gray-400' : isEvalPassing ? 'text-emerald-600' : 'text-rose-600'}`}>

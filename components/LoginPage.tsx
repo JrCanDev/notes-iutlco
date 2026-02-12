@@ -65,7 +65,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
                                 value={ine}
                                 onChange={(e) => setIne(e.target.value)}
                                 placeholder="Entrez votre INE"
-                                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all font-medium"
+                                className="w-full px-4 py-3 bg-gray-50 text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all font-medium"
                                 required
                                 disabled={loading}
                             />
