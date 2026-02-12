@@ -215,18 +215,7 @@ export default function Dashboard({ ine, studentName, semesters, onLogout }: Das
                                             </span>
                                             <span className="text-2xl text-gray-500">/20</span>
                                         </div>
-                                        <div className="mt-4">
-                                            <div className="flex justify-between text-sm mb-1">
-                                                <span className="text-gray-600">Progression</span>
-                                                <span className="text-gray-600">{Math.round((gpa / 20) * 100)}%</span>
-                                            </div>
-                                            <div className="w-64 h-2 bg-white/50 rounded-full overflow-hidden">
-                                                <div
-                                                    className={`h-full ${isPassingGPA ? 'bg-emerald-600' : 'bg-rose-600'} transition-all duration-500`}
-                                                    style={{ width: `${(gpa / 20) * 100}%` }}
-                                                />
-                                            </div>
-                                        </div>
+
                                     </div>
                                     <div className={`p-4 rounded-full ${isPassingGPA ? 'bg-emerald-200' : 'bg-rose-200'}`}>
                                         {isPassingGPA ? (

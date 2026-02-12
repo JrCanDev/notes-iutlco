@@ -44,8 +44,8 @@ export async function POST(request: NextRequest) {
             }
         );
 
-        // Decode ISO-8859-1 to UTF-8
-        const html = iconv.decode(Buffer.from(response.data), 'ISO-8859-1');
+        // Decode response as UTF-8
+        const html = iconv.decode(Buffer.from(response.data), 'UTF-8');
 
         // Parse with Cheerio
         const $ = cheerio.load(html);
