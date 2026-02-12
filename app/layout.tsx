@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "MyGrades - IUT Dashboard",
-    description: "Modern dashboard for IUT grades",
+    title: "Mes Notes - IUT Calais",
+    description: "Dashboard pour les notes de l'IUT Calais",
 };
 
 export default function RootLayout({
