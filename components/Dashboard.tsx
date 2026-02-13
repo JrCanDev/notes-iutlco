@@ -161,11 +161,11 @@ export default function Dashboard({ ine, studentName, semesters, onLogout }: Das
                 onLogout={onLogout}
             />
 
-            <div className="flex-1 overflow-y-auto ml-64">
-                <div className="max-w-7xl mx-auto p-8">
+            <div className="flex-1 overflow-y-auto lg:ml-64 pt-14 lg:pt-0">
+                <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
                     {/* Header */}
-                    <div className="mb-8">
-                        <h1 className="text-4xl font-bold text-gray-900 mb-2">
+                    <div className="mb-6 sm:mb-8">
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
                             Bonjour {studentName} 👋
                         </h1>
                         <p className="text-gray-600">Bienvenue sur votre tableau de bord</p>
@@ -205,23 +205,23 @@ export default function Dashboard({ ine, studentName, semesters, onLogout }: Das
                     {!loading && !error && ues.length > 0 && (
                         <>
                             {/* GPA Card */}
-                            <div className={`${isPassingGPA ? 'bg-gradient-to-br from-emerald-50 to-emerald-100 border-emerald-200' : 'bg-gradient-to-br from-rose-50 to-rose-100 border-rose-200'} rounded-2xl p-8 shadow-lg border mb-8`}>
-                                <div className="flex justify-between items-center">
+                            <div className={`${isPassingGPA ? 'bg-gradient-to-br from-emerald-50 to-emerald-100 border-emerald-200' : 'bg-gradient-to-br from-rose-50 to-rose-100 border-rose-200'} rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border mb-6 sm:mb-8`}>
+                                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                                     <div>
-                                        <p className="text-sm font-medium text-gray-600 mb-1">MOYENNE GÉNÉRALE</p>
+                                        <p className="text-xs sm:text-sm font-medium text-gray-600 mb-1">MOYENNE GÉNÉRALE</p>
                                         <div className="flex items-baseline gap-2">
-                                            <span className={`text-6xl font-bold ${isPassingGPA ? 'text-emerald-600' : 'text-rose-600'}`}>
+                                            <span className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${isPassingGPA ? 'text-emerald-600' : 'text-rose-600'}`}>
                                                 {gpa.toFixed(2)}
                                             </span>
-                                            <span className="text-2xl text-gray-500">/20</span>
+                                            <span className="text-xl sm:text-2xl text-gray-500">/20</span>
                                         </div>
 
                                     </div>
-                                    <div className={`p-4 rounded-full ${isPassingGPA ? 'bg-emerald-200' : 'bg-rose-200'}`}>
+                                    <div className={`p-3 sm:p-4 rounded-full ${isPassingGPA ? 'bg-emerald-200' : 'bg-rose-200'} self-center sm:self-auto`}>
                                         {isPassingGPA ? (
-                                            <TrendingUp className="text-emerald-700" size={48} />
+                                            <TrendingUp className="text-emerald-700" size={32} />
                                         ) : (
-                                            <TrendingDown className="text-rose-700" size={48} />
+                                            <TrendingDown className="text-rose-700" size={32} />
                                         )}
                                     </div>
                                 </div>
@@ -229,12 +229,12 @@ export default function Dashboard({ ine, studentName, semesters, onLogout }: Das
 
                             {/* Recent Grades Section */}
                             {recentGrades.length > 0 && (
-                                <div className="mb-8">
-                                    <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <div className="mb-6 sm:mb-8">
+                                    <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                                         <Calendar size={28} className="text-blue-600" />
                                         Notes récentes
                                     </h2>
-                                    <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-300">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                                         {recentGrades.map((grade, idx) => {
                                             const gradeValue = parseFloat(grade.grade.replace(',', '.'));
                                             const isPassing = gradeValue >= 10;
@@ -242,7 +242,7 @@ export default function Dashboard({ ine, studentName, semesters, onLogout }: Das
                                             return (
                                                 <div
                                                     key={idx}
-                                                    className="min-w-[300px] bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+                                                    className="bg-white rounded-xl p-4 sm:p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
                                                 >
                                                     <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
                                                         <Calendar size={14} />
@@ -274,7 +274,7 @@ export default function Dashboard({ ine, studentName, semesters, onLogout }: Das
 
                             {/* UE Cards */}
                             <div className="space-y-4">
-                                <h2 className="text-2xl font-bold text-gray-900 mb-4">Unités d'Enseignement</h2>
+                                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Unités d'Enseignement</h2>
                                 {ues.map((ue, index) => {
                                     const ueAvg = parseFloat(ue.average.replace(',', '.'));
                                     const isUEPassing = !isNaN(ueAvg) && ueAvg >= 10;
@@ -284,26 +284,26 @@ export default function Dashboard({ ine, studentName, semesters, onLogout }: Das
                                             {/* UE Header */}
                                             <div
                                                 onClick={() => toggleUE(index)}
-                                                className="p-6 cursor-pointer hover:bg-gray-50 transition-all flex justify-between items-center"
+                                                className="p-4 sm:p-6 cursor-pointer hover:bg-gray-50 transition-all flex justify-between items-center gap-3"
                                             >
                                                 <div className="flex items-center gap-4 flex-1">
                                                     <ChevronDown
                                                         className={`${ue.isExpanded ? 'rotate-180' : ''} transition-transform text-gray-400`}
                                                         size={20}
                                                     />
-                                                    <div>
-                                                        <h3 className="font-bold text-lg text-gray-900">{ue.name}</h3>
+                                                    <div className="min-w-0 flex-1">
+                                                        <h3 className="font-bold text-base sm:text-lg text-gray-900 truncate">{ue.name}</h3>
                                                         <p className="text-sm text-gray-500">{ue.modules.length} modules</p>
                                                     </div>
                                                 </div>
-                                                <div className={`text-3xl font-bold ${isUEPassing ? 'text-emerald-600' : 'text-rose-600'}`}>
+                                                <div className={`text-2xl sm:text-3xl font-bold ${isUEPassing ? 'text-emerald-600' : 'text-rose-600'} flex-shrink-0`}>
                                                     {ue.average}/20
                                                 </div>
                                             </div>
 
                                             {/* Modules List */}
                                             {ue.isExpanded && (
-                                                <div className="px-6 pb-6 space-y-3 border-t border-gray-100 pt-4">
+                                                <div className="px-4 sm:px-6 pb-4 sm:pb-6 space-y-3 border-t border-gray-100 pt-4">
                                                     {ue.modules.map((module, modIndex) => {
                                                         const modGrade = parseFloat(module.grade.replace(',', '.'));
                                                         const isModulePassing = !isNaN(modGrade) && modGrade >= 10;
@@ -313,17 +313,17 @@ export default function Dashboard({ ine, studentName, semesters, onLogout }: Das
                                                                 {/* Module Header */}
                                                                 <div
                                                                     onClick={() => toggleModule(index, modIndex)}
-                                                                    className="flex justify-between items-center p-4 hover:bg-gray-100 transition-all cursor-pointer"
+                                                                    className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 p-3 sm:p-4 hover:bg-gray-100 transition-all cursor-pointer"
                                                                 >
-                                                                    <div className="flex items-center gap-4 flex-1 min-w-0">
+                                                                    <div className="flex items-center gap-2 sm:gap-4 flex-1 min-w-0">
                                                                         <ChevronDown
                                                                             className={`${module.isExpanded ? 'rotate-180' : ''} transition-transform text-gray-400 flex-shrink-0`}
                                                                             size={16}
                                                                         />
-                                                                        <span className="text-blue-600 font-semibold text-sm whitespace-nowrap">{module.code}</span>
-                                                                        <span className="text-gray-700 truncate">{module.name}</span>
+                                                                        <span className="text-blue-600 font-semibold text-xs sm:text-sm whitespace-nowrap">{module.code}</span>
+                                                                        <span className="text-gray-700 text-sm truncate">{module.name}</span>
                                                                     </div>
-                                                                    <div className="flex items-center gap-4 flex-shrink-0 ml-4">
+                                                                    <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
                                                                         {module.evaluations && module.evaluations.length > 0 && (
                                                                             <span className="text-xs text-gray-500 bg-gray-200 px-2 py-1 rounded">
                                                                                 {module.evaluations.length} note{module.evaluations.length > 1 ? 's' : ''}
@@ -332,7 +332,7 @@ export default function Dashboard({ ine, studentName, semesters, onLogout }: Das
                                                                         <span className="text-gray-500 text-sm bg-gray-200 px-2 py-1 rounded whitespace-nowrap">
                                                                             Coef {module.coefficient}
                                                                         </span>
-                                                                        <span className={`text-2xl font-bold ${module.grade === '~' ? 'text-gray-400' : isModulePassing ? 'text-emerald-600' : 'text-rose-600'} whitespace-nowrap`}>
+                                                                        <span className={`text-lg sm:text-xl lg:text-2xl font-bold ${module.grade === '~' ? 'text-gray-400' : isModulePassing ? 'text-emerald-600' : 'text-rose-600'} whitespace-nowrap`}>
                                                                             {module.grade}/20
                                                                         </span>
                                                                     </div>
