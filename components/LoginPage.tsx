@@ -99,7 +99,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
                     {/* Footer */}
                     <div className="mt-6 pt-6 border-t border-gray-200 text-center">
                         <p className="text-xs text-gray-500">
-                            Crée par Sofiane Zemrani
+                            Crée par <a href="https://www.linkedin.com/in/sofiane-zemrani" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline transition-colors font-medium">Sofiane Zemrani</a>
                         </p>
                     </div>
                 </div>
