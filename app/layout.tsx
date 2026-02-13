@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
     title: "Mes Notes",
-    description: "Dashboard pour les notes ",
+    description: "Dashboard pour les notes",
 };
 
 export default function RootLayout({
