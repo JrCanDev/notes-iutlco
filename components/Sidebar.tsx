@@ -61,7 +61,7 @@ export default function Sidebar({ studentName, onLogout }: SidebarProps) {
                             </div>
                             <div className="text-center">
                                 <p className="text-white font-semibold">{studentName}</p>
-                                <p className="text-slate-400 text-sm">Étudiant IUT</p>
+                                <p className="text-slate-400 text-sm">Étudiant</p>
                             </div>
                         </div>
 
@@ -102,7 +102,7 @@ export default function Sidebar({ studentName, onLogout }: SidebarProps) {
                     </div>
                     <div className="text-center">
                         <p className="text-white font-semibold">{studentName}</p>
-                        <p className="text-slate-400 text-sm">Étudiant IUT</p>
+                        <p className="text-slate-400 text-sm">Étudiant</p>
                     </div>
                 </div>
 
