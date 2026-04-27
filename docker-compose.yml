@@ -1,0 +1,55 @@
+# /apps/blog.silarhi.fr/docker-compose.yml
+services:
+
+  phpmyadmin:
+    image: adminer
+    container_name: ${NAME}_pma
+    restart: unless-stopped
+    environment:
+      PMA_ABSOLUTE_URI: https://${NAME}.jrcandev.netlib.re/adminer
+        #PMA_HOST: ${NAME}_db
+      UPLOAD_LIMIT: 128M
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.pma_${NAME}.entrypoints=websecure
+      - traefik.http.routers.pma_${NAME}.rule=Host(`${NAME}.jrcan.dev`) && PathPrefix(`/adminer/`)
+      - traefik.http.middlewares.pmapathstrip_${NAME}.stripprefix.prefixes=/adminer
+      - traefik.http.routers.pma_${NAME}.middlewares=pmapathstrip_${NAME}@docker
+      - traefik.http.routers.pma_${NAME}.tls=true
+      - traefik.http.routers.pma_${NAME}.tls.certresolver=myresolver
+    volumes:
+        - /sessions
+    networks:
+        - web
+        - lan
+  app:
+    #image: php:8.2-apache
+    container_name: ${NAME}
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    networks:
+        - lan
+        - web
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.${NAME}.entryPoints=websecure
+      - "traefik.http.services.${NAME}.loadbalancer.server.port=3000"
+      - traefik.http.routers.${NAME}.rule=Host(`${NAME}.jrcan.dev`)
+      - traefik.http.routers.${NAME}.tls=true
+      - traefik.http.routers.${NAME}.tls.certresolver=myresolver
+
+    restart: always
+    environment:
+      # see https://ghost.org/docs/config/#configuration-options
+      container__name: ${NAME}
+
+
+networks:
+  web:
+    external: true
+  lan:
+    external: false
+    name: lan_${NAME}
+
+
